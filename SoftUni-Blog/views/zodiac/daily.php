@@ -1,5 +1,3 @@
-
-
 <main>
     <?php foreach($this->dailyZodiacs as $dailyZodiac) : ?>
         <h1><?= htmlentities($dailyZodiac['zodiac_sign']) ?></h1>
