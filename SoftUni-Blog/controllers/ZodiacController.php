@@ -4,7 +4,7 @@ class ZodiacController extends BaseController
 {
     //    TODO: Контролера не е готов.
     function index() {
-        $this->zodiacs = $this->model->getAll();
+        $this->year();
     }
 
     function daily() {
@@ -22,12 +22,45 @@ class ZodiacController extends BaseController
     function sign() {
         $this->signsZodiacs = $this->model->getAllTypeOfSign();
     }
-    
+
+
+    function create() {
+        if($this->isPost) {
+            $zodiac = $_POST['zodiac'];
+
+            $content = $_POST['post_content'];
+            if(strlen($content) < 50) {
+                $this->addErrorMessage("Грешка: Съдържанието не може да бъде по-малко от 50 символа.");
+                return;
+            }
+
+            // TODO: Валидация на дата.
+
+            $post_date = $_POST['post_date'];
+            $dateRegex = '/^\d{2,4}-\d{1,2}-\d{1,2}( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
+            if(!preg_match($dateRegex, $post_date)) {
+                $this->addErrorMessage("Грешка: Невалидна дата.");
+                return;
+            }
+            $zodiac_type = $_POST['zodiac_type'];
+
+            if($this->formValid()) {
+                if ($this->model->create($content, $post_date, $zodiac, $zodiac_type)) {
+                    $this->addInfoMessage("Post created");
+                    $this->redirect("admin");
+                } else {
+                    $this->addErrorMessage("Грешка: постта не може да бъде създаден.");
+                }
+            }
+        }
+    }
+
     function admin()
     {
         $this->authorize();
         $this->authorizeAdministration();
         $this->zodiacs = $this->model->getAll();
+        $this->create();
     }
 
     function delete($id) {
@@ -55,7 +88,6 @@ class ZodiacController extends BaseController
         $this->authorize();
         $this->authorizeAdministration();
         if($this->isPost) {
-            var_dump($_POST);
             $zodiac = $_POST['zodiac'];
             if(strlen($zodiac) < 1) {
                 $this->setValidationError("post_title", "Зодията не може да е празна");
@@ -86,6 +118,6 @@ class ZodiacController extends BaseController
             $this->addErrorMessage("Грешка: Зодиака не съществува.");
             $this->redirect("admin");
         }
-
+        $this->zodiac = $post;
     }
 }
