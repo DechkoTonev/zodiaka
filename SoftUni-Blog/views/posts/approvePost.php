@@ -1,6 +1,6 @@
-<?php $this->title = 'Изтрии постта'; ?>
+<?php $this->title = 'Одобри съществуващ пост'; ?>
 
-<h1>Are you sure you want to delete this post?</h1>
+<h1><?= htmlspecialchars($this->title)?></h1>
 
 <form method="post">
     <div>Title:</div>
@@ -12,5 +12,5 @@
     <div>Author ID:</div>
     <input type="text" value="<?= htmlspecialchars($this->post['user_id']) ?>" disabled/>
     <div><input type="submit" value="Delete">
-         <a href="<?=APP_ROOT?>/posts">[CANCEL]</a></div>
+        <a href="<?=APP_ROOT?>/posts/approve">[CANCEL]</a></div>
 </form>

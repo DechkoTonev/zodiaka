@@ -34,8 +34,6 @@ class ZodiacController extends BaseController
                 return;
             }
 
-            // TODO: Валидация на дата.
-
             $post_date = $_POST['post_date'];
             $dateRegex = '/^\d{2,4}-\d{1,2}-\d{1,2}( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
             if(!preg_match($dateRegex, $post_date)) {

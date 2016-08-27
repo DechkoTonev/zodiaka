@@ -10,10 +10,18 @@ class PostsModel extends BaseModel
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create(string $title, string $content, int $user_id) : bool
+    function getApprove()
+    {
+        $statement = self::$db->query("SELECT blog.unaccepted_posts.id, title, content, date, full_name, user_id " .
+            "FROM blog.unaccepted_posts LEFT JOIN blog.users ON unaccepted_posts.user_id = users.id " .
+            "ORDER BY date DESC ");
+        return $statement->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function userCreate(string $title, string $content, int $user_id) : bool
     {
         $statement = self::$db->prepare(
-            "INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)");
+            "INSERT INTO unaccepted_posts (title, content, user_id) VALUES (?, ?, ?)");
         $statement->bind_param("ssi", $title, $content, $user_id);
         $statement->execute();
         return $statement->affected_rows == 1;
@@ -30,10 +38,55 @@ class PostsModel extends BaseModel
         return $result;
     }
 
+
+    public static function getApprovePostById(int $id)
+    {
+        $statement = self::$db->prepare(
+            "SELECT * FROM unaccepted_posts WHERE id = ?"
+        );
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        return $result;
+    }
+
     function delete(int $id) : bool
     {
         $statement = self::$db->prepare(
             "DELETE FROM posts WHERE id = ?"
+        );
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        return $statement->affected_rows == 1;
+    }
+
+    public static function getByIdApprovedPost(int $id)
+    {
+        $statement = self::$db->prepare(
+            "SELECT * FROM unaccepted_posts WHERE id = ?"
+        );
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        return $result;
+    }
+
+    public static function approvePost(string $id) : bool
+    {
+        $statement = self::$db->prepare("INSERT INTO posts (title, content, date, user_id) " .
+            "SELECT title, content, date, user_id FROM unaccepted_posts WHERE id = ?; ");
+        $statement->bind_param("ii", $id);
+        $statement->execute();
+        $statement = self::$db->prepare("DELETE FROM unaccepted_posts WHERE id = ?;");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        return $statement->affected_rows >= 0;
+    }
+
+    function deleteApprovedPost(int $id) : bool
+    {
+        $statement = self::$db->prepare(
+            "DELETE FROM unaccepted_posts WHERE id = ?"
         );
         $statement->bind_param("i", $id);
         $statement->execute();

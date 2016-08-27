@@ -8,25 +8,23 @@ class ZodiacModel extends BaseModel
         $statement = self::$db->query("SELECT * FROM blog.zodiacs");
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
-    
-    function getAllTypeOfSign(){
-        $statement = self::$db->query("SELECT * FROM blog.zodiacs WHERE zodiac_type = 'daily' AND DATE(`date`) = DATE(CURDATE());");
-        return $statement->fetch_all(MYSQLI_ASSOC);
-    }
-    
+
     function getDaily()
     {
-        /*  //Пресмята деня днес в 00:00:00 часа
-        $dateNow = date("Y-m-d H:i:s", strtotime("now", mktime(0, 0, 0)));
+        //Пресмята деня днес в 00:00:00 часа
+        //$dateNow = date("Y-m-d H:i:s", strtotime("now", mktime(0, 0, 0)));
         //Пресмята деня утре в 00:00:00 часа
-        $dateAfterOneDay = date("Y-m-d H:i:s", strtotime("+1 day", mktime(0, 0, 0)));
+        //$dateAfterOneDay = date("Y-m-d H:i:s", strtotime("+1 day", mktime(0, 0, 0)));
 
-        $query = "SELECT * FROM blog.zodiacs WHERE date BETWEEN " .
-            "'" .$dateNow . "'" .
-            " AND ".
-            "'" . $dateAfterOneDay . "'" .
-            " ORDER BY DATE desc;";
-        */
+        // TODO: 
+        //SELECT * FROM blog.zodiacs where (
+        //    date BETWEEN
+        //    '2016-08-21 14:11:20'
+        //    AND
+        //    '2016-08-25 03:04:19')
+        // AND zodiac_type = 'year'
+        // AND zodiac_sign = 'риби'
+        // ORDER BY DATE desc;
 
         $statement = self::$db->query("SELECT * FROM blog.zodiacs WHERE zodiac_type = 'daily' AND DATE(`date`) = DATE(CURDATE());");
         return $statement->fetch_all(MYSQLI_ASSOC);
@@ -43,7 +41,7 @@ class ZodiacModel extends BaseModel
             "'" .$dateNow . "'" .
             " AND ".
             "'" . $dateAfterOneMonth . "'" .
-            " AND zodiac_type = 'month'";
+            " ORDER BY DATE desc;";
 
         $statement = self::$db->query($query);
         return $statement->fetch_all(MYSQLI_ASSOC);
@@ -60,27 +58,32 @@ class ZodiacModel extends BaseModel
             "'" .$dateNow . "'" .
             " AND ".
             "'" . $dateAfterOneYear . "'" .
-            " AND zodiac_type = 'year'";
+            " ORDER BY DATE desc;";
 
         $statement = self::$db->query($query);
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create(string $title, string $content, int $user_id) : bool
+    function getAllTypeOfSign(){
+        $statement = self::$db->query("SELECT * FROM blog.zodiacs WHERE zodiac_type = 'daily' AND DATE(`date`) = DATE(CURDATE());");
+        return $statement->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function create(string $content, string $date, string $zodiac_sign, $zodiac_type) : bool
     {
         $statement = self::$db->prepare(
-            "INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)");
-        $statement->bind_param("ssi", $title, $content, $user_id);
+            "INSERT INTO zodiacs (content, date, zodiac_sign, zodiac_type) VALUES (?, ?, ?, ?)");
+        $statement->bind_param("ssss", $content, $date, $zodiac_sign, $zodiac_type);
         $statement->execute();
         return $statement->affected_rows == 1;
     }
 
-    public static function getByZodiac(string $zodiac)
+    public static function getById(int $id)
     {
         $statement = self::$db->prepare(
-            "SELECT * FROM chinese_zodiacs WHERE zodiac_sign = ?"
+            "SELECT * FROM zodiacs WHERE id = ?"
         );
-        $statement->bind_param("i", $zodiac);
+        $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
         return $result;
@@ -89,19 +92,18 @@ class ZodiacModel extends BaseModel
     function delete(int $id) : bool
     {
         $statement = self::$db->prepare(
-            "DELETE FROM posts WHERE id = ?"
+            "DELETE FROM zodiacs WHERE id = ?"
         );
         $statement->bind_param("i", $id);
         $statement->execute();
         return $statement->affected_rows == 1;
     }
 
-    public function edit (string $id, string $title, string $content,
-                          string $date, int $user_id) : bool
+    public function edit (int $id,string $zodiac,string $content,string $date,string $zodiac_type) : bool
     {
-        $statement = self::$db->prepare("UPDATE posts SET title = ?, " .
-            "content = ?, date = ?, user_id = ? WHERE id = ?");
-        $statement->bind_param("sssii", $title, $content, $date, $user_id, $id);
+        $statement = self::$db->prepare("UPDATE zodiacs SET zodiac_sign = ?, " .
+            "content = ?, date = ?, zodiac_type = ? WHERE id = ?");
+        $statement->bind_param("ssssi", $zodiac, $content, $date, $zodiac_type, $id);
         $statement->execute();
         return $statement->affected_rows >= 0;
     }

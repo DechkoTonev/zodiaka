@@ -3,18 +3,18 @@
     <form name="filterZodiacs" method="get">
         <select name="zodiacs" >
             <option value="all" selected>Избери своят зодиакален знак</option>
-            <option value="rat">Плъх</option>
-            <option value="ox">Бик</option>
-            <option value="tiger">Тигър</option>
-            <option value="rabbit">Заек</option>
-            <option value="dragon">Дракон</option>
-            <option value="snake">Змия</option>
-            <option value="horse">Кон</option>
-            <option value="goat">Овца</option>
-            <option value="monkey">Маймуна</option>
-            <option value="rooster">Петел</option>
-            <option value="dog">Куче</option>
-            <option value="pig">Глиган</option>
+            <option value="плъх">Плъх</option>
+            <option value="бик">Бик</option>
+            <option value="тигър">Тигър</option>
+            <option value="заек">Заек</option>
+            <option value="дракон">Дракон</option>
+            <option value="змия">Змия</option>
+            <option value="кон">Кон</option>
+            <option value="овца">Овца</option>
+            <option value="маймуна">Маймуна</option>
+            <option value="петел">Петел</option>
+            <option value="куче">Куче</option>
+            <option value="глиган">Глиган</option>
         </select>
         <input type="submit" value="Покажи тази зодия">
     </form>

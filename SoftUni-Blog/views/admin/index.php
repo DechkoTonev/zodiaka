@@ -1,17 +1,10 @@
 <?php $this->title = 'Welcome to My Blog'; ?>
 
-<h1><?=htmlspecialchars($this->title)?></h1>
-
 <main>
-    <?php foreach($this->posts as $post) : ?>
-        <h1><?= htmlentities($post['title']) ?></h1>
-        <p>
-            <i>Posted on:</i>
-            <?= htmlentities($post['date']) ?>
-            <i>by</i>
-            <?= htmlentities($post['full_name']) ?>
-        </p>
-        <p><?= $post['content']?></p>
-    <?php endforeach ?>
+    <h1>Aдминистраторски Панел</h1>
+    <a href="<?=APP_ROOT?>"><img src="<?=APP_ROOT?>/content/images/site-logo.png"></a>
+    <a href="<?=APP_ROOT?>/zodiac/admin">Администрация на зодиак</a>
+    <a href="<?=APP_ROOT?>/chineseCalendar/admin">Администрация на китайски зодиак</a>
+    <a href="<?=APP_ROOT?>/posts/approve">Постове, който чакат одобрение.</a>
 </main>
 

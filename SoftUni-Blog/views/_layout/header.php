@@ -19,9 +19,8 @@
     <a href="<?=APP_ROOT?>/zodiac/sign">Зодии</a>
 <!--    TODO: DA se dovurshat zodiite-->
     <?php if ($this->isLoggedIn) : ?>
-        <a href="<?=APP_ROOT?>/chineseCalendar">Китайски календар</a>
-        <a href="<?=APP_ROOT?>/">Някакъв календар</a>
-        <a href="<?=APP_ROOT?>/">Още някакъв календар</a>
+        <a href="<?=APP_ROOT?>/chineseCalendar">Китайски хороскоп</a>
+        <a href="<?=APP_ROOT?>/posts/userCreate">Създайте ваша статия</a>
     <?php else: ?>
         <a href="<?=APP_ROOT?>/users/login">Логин</a>
         <a href="<?=APP_ROOT?>/users/register">Регистрация</a>

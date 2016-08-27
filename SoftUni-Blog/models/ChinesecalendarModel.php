@@ -11,21 +11,21 @@ class ChinesecalendarModel extends BaseModel
     
     
 
-    public function create(string $title, string $content, int $user_id) : bool
+    public function create(string $content, string $date, string $zodiac_sign) : bool
     {
         $statement = self::$db->prepare(
-            "INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)");
-        $statement->bind_param("ssi", $title, $content, $user_id);
+            "INSERT INTO chinese_zodiacs (content, date, zodiac_sign) VALUES (?, ?, ?)");
+        $statement->bind_param("sss", $content, $date, $zodiac_sign);
         $statement->execute();
         return $statement->affected_rows == 1;
     }
 
-    public static function getByZodiac(string $zodiac)
+    public static function getById(int $id)
     {
         $statement = self::$db->prepare(
-            "SELECT * FROM chinese_zodiacs WHERE zodiac_sign = ?"
+            "SELECT * FROM chinese_zodiacs WHERE id = ?"
         );
-        $statement->bind_param("i", $zodiac);
+        $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
         return $result;
@@ -34,19 +34,19 @@ class ChinesecalendarModel extends BaseModel
     function delete(int $id) : bool
     {
         $statement = self::$db->prepare(
-            "DELETE FROM posts WHERE id = ?"
+            "DELETE FROM chinese_zodiacs WHERE id = ?"
         );
         $statement->bind_param("i", $id);
         $statement->execute();
         return $statement->affected_rows == 1;
     }
 
-    public function edit (string $id, string $title, string $content,
-                          string $date, int $user_id) : bool
+    public function edit (int $id, string $content,
+                          string $date, string $zodiac_sign) : bool
     {
-        $statement = self::$db->prepare("UPDATE posts SET title = ?, " .
-            "content = ?, date = ?, user_id = ? WHERE id = ?");
-        $statement->bind_param("sssii", $title, $content, $date, $user_id, $id);
+        $statement = self::$db->prepare("UPDATE chinese_zodiacs SET " .
+            "content = ?, date = ?, zodiac_sign = ? WHERE id = ?");
+        $statement->bind_param("sssi", $content, $date, $zodiac_sign, $id);
         $statement->execute();
         return $statement->affected_rows >= 0;
     }

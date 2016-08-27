@@ -21,7 +21,7 @@ class UsersController extends BaseController
                 $this->addInfoMessage("Login successful");
                 $this->redirect("");
             } else {
-                $this->addErrorMessage("Error: Login failed");
+                $this->addErrorMessage("Грешка: Грешно име или парола");
             }
         }
     }
@@ -34,16 +34,20 @@ class UsersController extends BaseController
             $password_confirm = $_POST['password_confirm'];
             $full_name = $_POST['full_name'];
 
-            if(strlen($username) <= 1) {
-                $this->setValidationError("username", "Username invalid");
+            if(strlen($username) <= 8) {
+                $this->setValidationError("username", "Потребителското име трябва да е не по-малко от 8 символа");
             }
 
-            if(strlen($password) <= 1) {
-                $this->setValidationError("password", "Password invalid");
+            if(strlen($password) <= 6) {
+                $this->setValidationError("password", "Паролата трябва да е не по-малко от 6 символа");
+            }
+
+            if(strlen($full_name) <= 10) {
+                $this->setValidationError("password", "Моля въведете пълните си имена");
             }
 
             if($password != $password_confirm) {
-                $this->setValidationError("password_confirm","Passwords do not match!");
+                $this->setValidationError("password_confirm","Паролите не съвпадат!");
             }
 
             if($this->formValid()) {
@@ -51,10 +55,10 @@ class UsersController extends BaseController
             if($userId) {
                 $_SESSION['username'] = $username;
                 $_SESSION['userId'] = $userId;
-                $this->addInfoMessage("Register successful");
+                $this->addInfoMessage("Вие се регистрирахте успешно");
                 $this->redirect("");
             } else {
-                $this->addErrorMessage("Error: Registration failed");
+                $this->addErrorMessage("Грешка: Не успяхте да се регистрирате");
             }
             }
         }
