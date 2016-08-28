@@ -1,4 +1,4 @@
-<?php $this->title = 'Одобри съществуващ пост'; ?>
+<?php $this->title = 'Одобрение на пост'; ?>
 
 <h1><?= htmlspecialchars($this->title)?></h1>
 
@@ -11,6 +11,6 @@
     <input type="text" value="<?= htmlspecialchars($this->post['date']) ?>" disabled/>
     <div>Author ID:</div>
     <input type="text" value="<?= htmlspecialchars($this->post['user_id']) ?>" disabled/>
-    <div><input type="submit" value="Delete">
+    <div><input type="submit" value="Approve">
         <a href="<?=APP_ROOT?>/posts/approve">[CANCEL]</a></div>
 </form>

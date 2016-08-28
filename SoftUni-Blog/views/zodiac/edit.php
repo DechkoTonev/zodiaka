@@ -5,26 +5,23 @@
 <form method="post">
     <div>Зодия:</div>
     <select name="zodiac" >
-        <option value="овен">Овен</option>
-        <option value="телец">Телец</option>
-        <option value="близнаци">Близнаци</option>
-        <option value="рак">Рак</option>
-        <option value="лъв">Лъв</option>
-        <option value="дева">Дева</option>
-        <option value="везни">Везни</option>
-        <option value="скорпион">Скорпион</option>
-        <option value="стрелец">Стрелец</option>
-        <option value="козирог">Козирог</option>
-        <option value="водолей">Водолей</option>
-        <option value="риби">Риби</option>
+        <option value="Овен">Овен</option>
+        <option value="Телец">Телец</option>
+        <option value="Близнаци">Близнаци</option>
+        <option value="Рак">Рак</option>
+        <option value="Лъв">Лъв</option>
+        <option value="Дева">Дева</option>
+        <option value="Везни">Везни</option>
+        <option value="Скорпион">Скорпион</option>
+        <option value="Стрелец">Стрелец</option>
+        <option value="Козирог">Козирог</option>
+        <option value="Водолей">Водолей</option>
+        <option value="Риби">Риби</option>
     </select>
     <div>Съдържание:</div>
     <textarea rows="10" name="post_content"><?=
        htmlspecialchars($this->zodiac['content']) ?></textarea>
-    <div>Дата: (yyyy-MM-dd hh:mm:ss) :</div>
-    <input type="text" name="post_date" value="<?=
-        htmlspecialchars($this->zodiac['date']) ?>" />
-    <div>Зодиак от тип:</div>
+       <div>Зодиак от тип:</div>
     <select name="zodiac_type" >
         <option value="daily">Дневен</option>
         <option value="month">Месечен</option>

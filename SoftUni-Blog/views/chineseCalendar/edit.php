@@ -21,9 +21,6 @@
     <div>Съдържание:</div>
     <textarea rows="10" name="post_content"><?=
        htmlspecialchars($this->zodiac['content']) ?></textarea>
-    <div>Дата: (yyyy-MM-dd hh:mm:ss) :</div>
-    <input type="text" name="post_date" value="<?=
-        htmlspecialchars($this->zodiac['date']) ?>" />
     <div><input type="submit" value="Edit">
          <a href="<?=APP_ROOT?>/chineseCalendar/admin">[CANCEL]</a></div>
 </form>

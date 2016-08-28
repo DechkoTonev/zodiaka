@@ -34,15 +34,15 @@ class UsersController extends BaseController
             $password_confirm = $_POST['password_confirm'];
             $full_name = $_POST['full_name'];
 
-            if(strlen($username) <= 8) {
-                $this->setValidationError("username", "Потребителското име трябва да е не по-малко от 8 символа");
+            if(strlen($username) < 5) {
+                $this->setValidationError("username", "Потребителското име трябва да е не по-малко от 5 символа");
             }
 
-            if(strlen($password) <= 6) {
+            if(strlen($password) < 6) {
                 $this->setValidationError("password", "Паролата трябва да е не по-малко от 6 символа");
             }
 
-            if(strlen($full_name) <= 10) {
+            if(strlen($full_name) < 10) {
                 $this->setValidationError("password", "Моля въведете пълните си имена");
             }
 

@@ -7,5 +7,5 @@
     <div>Password: <input type="password" name="password" required></div>
     <div>Password Confirm: <input type="password" name="password_confirm" required></div>
     <div>Fullname: <input type="text" name="full_name"></div>
-    <div><input type="submit" value="Login"></div>
+    <div><input type="submit" value="Register"></div>
 </form>

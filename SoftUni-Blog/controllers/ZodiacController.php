@@ -34,16 +34,10 @@ class ZodiacController extends BaseController
                 return;
             }
 
-            $post_date = $_POST['post_date'];
-            $dateRegex = '/^\d{2,4}-\d{1,2}-\d{1,2}( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
-            if(!preg_match($dateRegex, $post_date)) {
-                $this->addErrorMessage("Грешка: Невалидна дата.");
-                return;
-            }
             $zodiac_type = $_POST['zodiac_type'];
 
             if($this->formValid()) {
-                if ($this->model->create($content, $post_date, $zodiac, $zodiac_type)) {
+                if ($this->model->create($content, $zodiac, $zodiac_type)) {
                     $this->addInfoMessage("Post created");
                     $this->redirect("admin");
                 } else {
@@ -94,15 +88,10 @@ class ZodiacController extends BaseController
             if(strlen($content) < 1) {
                 $this->setValidationError("post_content", "Съдържанието не може да е празно");
             }
-            $date = $_POST['post_date'];
-            $dateRegex = '/^\d{2,4}-\d{1,2}-\d{1,2}( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
-            if(!preg_match($dateRegex, $date)) {
-                $this->setValidationError("post_date", "Невалидна дата");
-            }
             $zodiac_type = $_POST['zodiac_type'];
 
             if($this->formValid()) {
-                if($this->model->edit($id, $zodiac, $content, $date, $zodiac_type)) {
+                if($this->model->edit($id, $zodiac, $content, $zodiac_type)) {
                     $this->addInfoMessage("Зодиака е редактиран");
                 } else {
                     $this->addErrorMessage("Грешка: Зодиака не беше редактиран.");

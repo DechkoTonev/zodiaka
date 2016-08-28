@@ -11,11 +11,11 @@ class ChinesecalendarModel extends BaseModel
     
     
 
-    public function create(string $content, string $date, string $zodiac_sign) : bool
+    public function create(string $content, string $zodiac_sign) : bool
     {
         $statement = self::$db->prepare(
-            "INSERT INTO chinese_zodiacs (content, date, zodiac_sign) VALUES (?, ?, ?)");
-        $statement->bind_param("sss", $content, $date, $zodiac_sign);
+            "INSERT INTO chinese_zodiacs (content, zodiac_sign) VALUES (?, ?, ?)");
+        $statement->bind_param("ss", $content, $zodiac_sign);
         $statement->execute();
         return $statement->affected_rows == 1;
     }
@@ -41,12 +41,11 @@ class ChinesecalendarModel extends BaseModel
         return $statement->affected_rows == 1;
     }
 
-    public function edit (int $id, string $content,
-                          string $date, string $zodiac_sign) : bool
+    public function edit (int $id, string $content, string $zodiac_sign) : bool
     {
         $statement = self::$db->prepare("UPDATE chinese_zodiacs SET " .
-            "content = ?, date = ?, zodiac_sign = ? WHERE id = ?");
-        $statement->bind_param("sssi", $content, $date, $zodiac_sign, $id);
+            "content = ?, zodiac_sign = ? WHERE id = ?");
+        $statement->bind_param("ssi", $content, $zodiac_sign, $id);
         $statement->execute();
         return $statement->affected_rows >= 0;
     }
