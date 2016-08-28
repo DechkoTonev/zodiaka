@@ -75,7 +75,7 @@ class PostsModel extends BaseModel
     {
         $statement = self::$db->prepare("INSERT INTO posts (title, content, date, user_id) " .
             "SELECT title, content, date, user_id FROM unaccepted_posts WHERE id = ?; ");
-        $statement->bind_param("ii", $id);
+        $statement->bind_param("i", $id);
         $statement->execute();
         $statement = self::$db->prepare("DELETE FROM unaccepted_posts WHERE id = ?;");
         $statement->bind_param("i", $id);
