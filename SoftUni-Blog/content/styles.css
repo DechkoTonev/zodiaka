@@ -5,7 +5,7 @@ body>header {
 body{
     background-image: url("background.jpg");
 	padding: 5px;
-	color: red;
+	color: white;
 }
 
 
@@ -21,6 +21,7 @@ body>footer {
     padding: 5px;
     margin: 10px 0;
     text-align: center;
+    color: #000;
 }
 
 table th, table td {
@@ -52,6 +53,18 @@ ul#messages li.error {
     color: red;
 }
 
+#logout-button{
+    width: 80%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-left: 11%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 35px;
+}
+
 #logged-in-info {
     float: right;
     margin-top: 18px;
@@ -67,7 +80,8 @@ body>aside {
     width: 200px;
     background: #CCC;
     padding: 15px;
-    margin-left: 20px;
+    margin-left: 30px;
+    margin-top: 100px;
 }
 
 body>aside h2 {
