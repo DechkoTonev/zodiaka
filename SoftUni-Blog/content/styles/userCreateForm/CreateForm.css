@@ -1,0 +1,50 @@
+#create-form{
+    width: 50%;
+    height: 40%;
+    padding: 20px 22px;
+    margin: 10px auto;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    background-color: #CCCCCC;
+}
+#create-title, #create-content{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit],#cancel-hlink {
+    width: 80%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px auto;
+    margin-left:11%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type = submit], #cancel-hlink :hover {
+    background-color:  #45a049;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 3px;
+    padding-left: 15px;
+    text-indent: -15px;
+    color: blue;
+    vertical-align: middle;
+}
+
+#create-title{
+    margin-left: 23px;
+}
+#cancel-hlink{
+    margin-left:42%;
+}
