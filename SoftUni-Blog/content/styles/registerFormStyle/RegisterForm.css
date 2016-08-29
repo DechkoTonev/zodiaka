@@ -1,1 +1,34 @@
+h1{
+    text-align: center;
+}
 
+#register-form{
+    width: 65%;
+    height: 45%;
+    padding: 20px 22px;
+    margin: 10px auto;
+    border: 1px solid #dd0000;
+    border-radius: 15px;
+    background-color: #CCCCCC;
+}
+
+#register-password,
+#register-username,
+#register-user-confirm,
+#register-user-fullname {
+    width: 80%;
+    padding: 12px 30px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #dd0000;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#register-username{
+    margin-left: 6.5%;
+}
+
+#register-password, #register-user-fullname{
+    margin-left: 7%;
+}
