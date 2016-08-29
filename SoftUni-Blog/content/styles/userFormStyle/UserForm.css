@@ -6,7 +6,7 @@ h1{
     height: 40%;
     padding: 20px 22px;
     margin: 10px auto;
-    border: 1px solid #dd0000;
+    border: 1px solid #eee;
     border-radius: 15px;
     background-color: #CCCCCC;
 }
@@ -16,7 +16,7 @@ input[type=text], input[type=password]{
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #dd0000;
+    border: 1px solid #eee;
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -42,4 +42,5 @@ label {
     margin-bottom: 3px;
     padding-left: 15px;
     text-indent: -15px;
+    color: blue;
 }
