@@ -32,3 +32,11 @@ h1{
 #register-password, #register-user-fullname{
     margin-left: 7%;
 }
+
+
+label {
+    display: inline-block;
+    margin-bottom: 3px;
+    padding-left: 15px;
+    text-indent: -15px;
+}
