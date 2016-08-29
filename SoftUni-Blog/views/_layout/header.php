@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="<?=APP_ROOT?>/content/styles.css" />
     <link rel="stylesheet" href="<?=APP_ROOT?>/content/styles/userFormStyle/UserForm.css">
     <link rel="stylesheet" href="<?=APP_ROOT?>/content/styles/registerFormStyle/RegisterForm.css">
+    <link rel="stylesheet" href="<?=APP_ROOT?>/content/styles/userCreateForm/CreateForm.css">
     <script src="<?=APP_ROOT?>/content/scripts/jquery-3.0.0.min.js"></script>
     <script src="<?=APP_ROOT?>/content/scripts/blog-scripts.js"></script>
     <title><?php if (isset($this->title)) echo htmlspecialchars($this->title) ?></title>
@@ -36,7 +37,7 @@
         <div id="logged-in-info">
             <span>Hello, <b><?=htmlspecialchars($_SESSION['username'])?></b></span>
             <form method="post" action="<?=APP_ROOT?>/users/logout">
-                <input type="submit" value="Logout"/>
+                <input type="submit" value="Logout" id="logout-button"/>
             </form>
         </div>
     <?php endif; ?>
