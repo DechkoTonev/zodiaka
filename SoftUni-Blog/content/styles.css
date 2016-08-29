@@ -1,7 +1,13 @@
 body>header {
     background: #eee;
-    padding: 5px;
 }
+
+body{
+    background-image: url("background.jpg");
+	padding: 5px;
+	color: red;
+}
+
 
 body>header>a>img, body>header a  {
     display: inline-block;
