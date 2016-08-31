@@ -3,8 +3,7 @@
 class UsersController extends BaseController
 {
     public function index() {
-        $this->authorize();
-        $this->users = $this->model->getAll();
+        $this->redirect("");
     }
     
     public function login()

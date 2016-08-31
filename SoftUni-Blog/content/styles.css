@@ -1,5 +1,6 @@
 body>header {
     background: #eee;
+    margin-bottom: 20px;
 }
 
 body{
@@ -8,6 +9,37 @@ body{
 	color: white;
 }
 
+table{
+    margin-top: 20px;
+}
+
+a {
+    color: black;
+}
+
+#menu-for-nav{
+    margin-left: 18%;
+}
+
+#admin-nav{
+    position: absolute;
+    top: 147px;
+    left: 407px;
+}
+
+.administrator-navigation{
+    display: inline-block;
+    width: 177px;
+    height: 50px;
+    background-color: white;
+    border: 1px solid black;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+#adnimistration-panel{
+    margin-bottom: 10px;
+}
 
 body>header>a>img, body>header a  {
     display: inline-block;
@@ -57,12 +89,13 @@ ul#messages li.error {
     width: 80%;
     background-color: #4CAF50;
     color: white;
-    padding: 14px 20px;
+    padding: 15px 20px;
     margin-left: 11%;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 35px;
+    margin-top: -2px;
+    margin-right: 20px;
 }
 
 #logged-in-info {
@@ -109,16 +142,8 @@ body>main:after {
 }
 
 .messagepop {
-    background-color:#FFFFFF;
-    border:1px solid #999999;
-    cursor:default;
-    display:none;
-    margin-top: 15px;
-    position:absolute;
-    text-align:left;
-    width:394px;
-    z-index:50;
-    padding: 25px 25px 20px;
+    background-color: rgba(54, 25, 25, 0.1);;
+    display: none;
 }
 
 label {

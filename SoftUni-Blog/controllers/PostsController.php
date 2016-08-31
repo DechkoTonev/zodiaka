@@ -132,28 +132,28 @@ class PostsController extends BaseController
         $this->authorizeAdministration();
         if($this->isPost) {
             $title = $_POST['post_title'];
-            if(strlen($title) < 1) {
-                $this->setValidationError("post_title", "Title cannot be empty");
+            if(strlen($title) < 50) {
+                $this->setValidationError("post_title", "Заглавието е твърде късо.");
             }
             $content = $_POST['post_content'];
-            if(strlen($content) < 1) {
-                $this->setValidationError("post_content", "Content cannot be empty");
+            if(strlen($content) < 150) {
+                $this->setValidationError("post_content", "Съдържанието е твърде късо.");
             }
             $date = $_POST['post_date'];
             $dateRegex = '/^\d{2,4}-\d{1,2}-\d{1,2}( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
             if(!preg_match($dateRegex, $date)) {
-                $this->setValidationError("post_date", "Invalid date");
+                $this->setValidationError("post_date", "Невалидна дата");
             }
             $user_id = $_POST['user_id'];
             if($user_id <= 0 || $user_id > 1000000) {
-                $this->setValidationError("user_id", "Invalid author user ID!");
+                $this->setValidationError("user_id", "Невалидно ID!");
             }
 
             if($this->formValid()) {
                 if($this->model->edit($id, $title, $content, $date, $user_id)) {
-                    $this->addInfoMessage("Post edited");
+                    $this->addInfoMessage("Постта беше  редактиран");
                 } else {
-                    $this->addErrorMessage("Error: cannot edit post.");
+                    $this->addErrorMessage("Грешка: постта не може да бъде редактиран.");
                 }
                 $this->redirect("posts");
             }
@@ -161,7 +161,7 @@ class PostsController extends BaseController
 
         $post = $this->model->getById($id);
         if(!$post) {
-            $this->addErrorMessage("Error: post does not exist.");
+            $this->addErrorMessage("Грешка: постта не съществува.");
             $this->redirect("posts");
         }
         $this->post = $post;

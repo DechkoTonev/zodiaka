@@ -2,7 +2,6 @@
 
 abstract class BaseController
 {
-//    TODO: Валидацията за админ готова, не е тествана обаче ;ддд.
     protected $controllerName;
     protected $actionName;
     protected $isViewRendered = false;

@@ -7,7 +7,6 @@ class ChinesecalendarController extends BaseController
         $this->authorize();
     }
     
-    //    TODO: Контролера не е готов.
     function index() {
         $this->chinese_zodiacs = $this->model->getAll();
     }
@@ -39,7 +38,6 @@ class ChinesecalendarController extends BaseController
         }
     }
     
-    // TODO: delete, edit не са напълно завършени
     function delete($id) {
         $this->authorize();
         $this->authorizeAdministration();

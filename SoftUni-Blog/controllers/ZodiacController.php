@@ -2,7 +2,6 @@
 
 class ZodiacController extends BaseController
 {
-    //    TODO: Контролера не е готов.
     function index() {
         $this->year();
     }
