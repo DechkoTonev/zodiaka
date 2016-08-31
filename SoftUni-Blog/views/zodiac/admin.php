@@ -1,8 +1,12 @@
+<?php $this->title = 'Зодиак Администрация'; ?>
+
+<h1><?=htmlspecialchars($this->title)?></h1>
+
 <main>
     <div class="messagepop pop">
-        <form method="post" id="new_message" name="">
-            Избери зодия:
-            <select name="zodiac" >
+        <form method="post" id="new_message">
+            <label for="select-zodiacs">Избери зодия:</label>
+            <select name="zodiac" id="select-zodiacs">
                 <option value="Овен">Овен</option>
                 <option value="Телец">Телец</option>
                 <option value="Близнаци">Близнаци</option>
@@ -17,15 +21,22 @@
                 <option value="Риби">Риби</option>
             </select>
             <br>
-            Въведи съдържание:<br>
-            <textarea rows="10" name="post_content"></textarea>  <br>
-            Зодиак от тип:
-            <select name="zodiac_type" >
+            
+            <label for="create-textarea">Въведи съдържание:</label>
+            <textarea rows="10" name="post_content" id="create-textarea"></textarea>
+            <br>
+            
+            <label for="zodiac_type">Зодиак от тип:</label>
+            <select name="zodiac_type" id="zodiac_type" >
                 <option value="daily">Дневен</option>
                 <option value="month">Месечен</option>
                 <option value="year">Годишен</option>
             </select>
-            <p><input type="submit" value="Създай зодиак" id="message_submit"/> or <a class="close" href="/">Cancel</a></p>
+
+            <input type="submit" value="Създай зодиак" id="message_submit"/>
+            </br>
+            </br>
+            <a class="close"  id="cancel-link" href="/">Cancel</a>
         </form>
     </div>
 

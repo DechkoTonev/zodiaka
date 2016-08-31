@@ -1,4 +1,4 @@
-<?php $this->title = 'Welcome to My Blog'; ?>
+<?php $this->title = 'Зодиак - Начало'; ?>
 
 <h1><?=htmlspecialchars($this->title)?></h1>
 

@@ -2,22 +2,10 @@
 
 class ChinesecalendarModel extends BaseModel
 {
-//    TODO: Модела не е готов.
     function getAll()
     {
         $statement = self::$db->query("SELECT * FROM blog.chinese_zodiacs");
         return $statement->fetch_all(MYSQLI_ASSOC);
-    }
-    
-    
-
-    public function create(string $content, string $zodiac_sign) : bool
-    {
-        $statement = self::$db->prepare(
-            "INSERT INTO chinese_zodiacs (content, zodiac_sign) VALUES (?, ?, ?)");
-        $statement->bind_param("ss", $content, $zodiac_sign);
-        $statement->execute();
-        return $statement->affected_rows == 1;
     }
 
     public static function getById(int $id)

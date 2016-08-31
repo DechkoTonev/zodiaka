@@ -1,4 +1,4 @@
-<?php $this->title = 'Edit Existing Post'; ?>
+<?php $this->title = 'Редактиране на постове'; ?>
 
 <h1><?= htmlspecialchars($this->title)?></h1>
 

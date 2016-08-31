@@ -2,7 +2,6 @@
 
 class ZodiacModel extends BaseModel
 {
-//    TODO: Модела не е готов.
     function getAll()
     {
         $statement = self::$db->query("SELECT * FROM blog.zodiacs");

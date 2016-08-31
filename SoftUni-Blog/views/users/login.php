@@ -1,4 +1,4 @@
-<?php $this->title = 'Login'; ?>
+<?php $this->title = 'Зодиак - Логин'; ?>
 
 <h1><?= htmlspecialchars($this->title) ?></h1>
 

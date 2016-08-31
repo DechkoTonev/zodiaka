@@ -1,6 +1,6 @@
 <?php $this->title = 'Изтрии постта'; ?>
 
-<h1>Are you sure you want to delete this post?</h1>
+<h1>Сигурни ли сте, че искате да изтриите постта?</h1>
 
 <form method="post">
     <div>Title:</div>
