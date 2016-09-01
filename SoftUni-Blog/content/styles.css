@@ -1,6 +1,7 @@
 body>header {
     background: #eee;
     margin-bottom: 20px;
+    height: 121px;
 }
 
 body{
@@ -22,9 +23,9 @@ a {
 }
 
 #admin-nav{
-    position: absolute;
-    top: 147px;
-    left: 407px;
+    position: relative;
+    top: -85px;
+    left: 155px;
 }
 
 .administrator-navigation{
